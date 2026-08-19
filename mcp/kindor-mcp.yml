@@ -2,14 +2,12 @@ generated: '2026-07-19'
 method: searched
 status: published
 source: https://www.kindor.co/_api/mcp
-notes: >-
-  Kindor's public website (kindor.co) is powered by Wix and exposes a live Wix
-  Site MCP server at https://www.kindor.co/_api/mcp, advertised in the site's
-  /llms.txt. It is a generic Wix Site MCP (site content + Wix REST API access on
-  a visitor's behalf), not a Kindor product API. A tools/list call over
-  streamable HTTP returned 200 with the tool set below. No authentication is
-  required to connect; write operations act on the visitor's behalf via a
-  generated visitor token. Kindor publishes no first-party product API.
+notes: Kindor's public website (kindor.co) is powered by Wix and exposes a live Wix Site MCP server at
+  https://www.kindor.co/_api/mcp, advertised in the site's /llms.txt. It is a generic Wix Site MCP (site
+  content + Wix REST API access on a visitor's behalf), not a Kindor product API. A tools/list call over
+  streamable HTTP returned 200 with the tool set below. No authentication is required to connect; write
+  operations act on the visitor's behalf via a generated visitor token. Kindor publishes no first-party
+  product API.
 server:
   name: Kindor.co
   vendor: Wix Site MCP
@@ -18,30 +16,45 @@ server:
   auth: none
   docs: https://dev.wix.com/docs/develop-websites/articles/get-started/about-the-wix-site-mcp
 tools:
-  - name: GetBusinessDetails
-    description: Get business and site details (timezone, email, phone, fax, address, site/business name, description, schedule, available site features).
-    read_only: true
-  - name: SearchInSite
-    description: Search the site for general business information (hours, address, policies) when API-doc search does not apply.
-    read_only: true
-  - name: SearchSiteApiDocs
-    description: Search the API documentation for the Wix business solutions installed on the site and learn how to call them.
-    read_only: true
-  - name: GenerateVisitorToken
-    description: Create a new visitor session and obtain a visitor access token; required before the first CallWixSiteAPI/ExecuteWixAPI request.
-    read_only: true
-  - name: CallWixSiteAPI
-    description: Call a Wix REST API method (usually https://www.wixapis.com/...) on the visitor's behalf, e.g. query site data, book an appointment, or start a purchase.
-    read_only: false
-  - name: ExecuteWixAPI
-    description: Run sandboxed JavaScript against the Wix REST API on the visitor's behalf, chaining multiple requests in one call (preferred over CallWixSiteAPI).
-    read_only: false
-  - name: BrowseWixRESTDocsMenu
-    description: Browse the Wix REST API documentation menu hierarchy to discover APIs by navigating categories.
-    read_only: true
-  - name: ReadFullDocsArticle
-    description: Fetch a complete Wix docs or method article (with code examples) from the Wix developer documentation portal.
-    read_only: true
-  - name: ReadFullDocsMethodSchema
-    description: Fetch the full request/response schema for a given Wix API method.
-    read_only: true
+- name: GetBusinessDetails
+  description: Get business and site details (timezone, email, phone, fax, address, site/business name,
+    description, schedule, available site features).
+  read_only: true
+- name: SearchInSite
+  description: Search the site for general business information (hours, address, policies) when API-doc
+    search does not apply.
+  read_only: true
+- name: SearchSiteApiDocs
+  description: Search the API documentation for the Wix business solutions installed on the site and learn
+    how to call them.
+  read_only: true
+- name: GenerateVisitorToken
+  description: Create a new visitor session and obtain a visitor access token; required before the first
+    CallWixSiteAPI/ExecuteWixAPI request.
+  read_only: true
+- name: CallWixSiteAPI
+  description: Call a Wix REST API method (usually https://www.wixapis.com/...) on the visitor's behalf,
+    e.g. query site data, book an appointment, or start a purchase.
+  read_only: false
+- name: ExecuteWixAPI
+  description: Run sandboxed JavaScript against the Wix REST API on the visitor's behalf, chaining multiple
+    requests in one call (preferred over CallWixSiteAPI).
+  read_only: false
+- name: BrowseWixRESTDocsMenu
+  description: Browse the Wix REST API documentation menu hierarchy to discover APIs by navigating categories.
+  read_only: true
+- name: ReadFullDocsArticle
+  description: Fetch a complete Wix docs or method article (with code examples) from the Wix developer
+    documentation portal.
+  read_only: true
+- name: ReadFullDocsMethodSchema
+  description: Fetch the full request/response schema for a given Wix API method.
+  read_only: true
+deployment:
+  mode: remote
+  endpoint: https://www.kindor.co/_api/mcp
+  verified: probed
+  probe: live
+  tools: 9
+  checked: '2026-08-12'
+  source: catalog MCP census
